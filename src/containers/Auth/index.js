@@ -21,7 +21,7 @@ class AuthContainer extends Component {
     getPath = () => this.props.location.pathname
 
     getComponentToRender = () => {
-        return routeMap[this.getPath() || 'default']()
+        return routeMap[this.getPath() || 'default']({history: this.props.history})
     }
 
     render = () => {

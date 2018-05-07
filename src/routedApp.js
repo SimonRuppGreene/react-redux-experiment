@@ -1,12 +1,13 @@
 import React from 'react'
-import {Switch, Route} from 'react-router-dom'
-import {Header} from '../components/Header'
+import {Switch, Route, BrowserRouter, HashRouter} from 'react-router-dom'
 
-import {HomePage} from './HomePage'
-import {OtherPage} from './OtherPage'
-import {AuthContainer} from './Auth'
+import {Header} from 'components/Header'
 
-export const App = () => {
+import {HomePage} from 'containers/HomePage'
+import {OtherPage} from 'containers/OtherPage'
+import {AuthContainer} from 'containers/Auth'
+
+const App = (props) => {
     return (
         <div>
             <Header />
@@ -19,3 +20,9 @@ export const App = () => {
         </div>
     )
 }
+
+export const RoutedApp = (
+    <HashRouter>
+        <App />
+    </HashRouter>
+)

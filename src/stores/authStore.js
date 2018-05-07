@@ -13,7 +13,8 @@ class AuthStore extends Reflux.Store {
 
         this.state = {
             error: null,
-            loading: false
+            loading: false,
+            authenticated: false
         }
 
         this.listenTo(actions.login, this.onLogin)
@@ -43,7 +44,7 @@ class AuthStore extends Reflux.Store {
         console.log('completed login')
         console.log(loginResult)
 
-        this.setState({loading: false})
+        this.setState({loading: false, authenticated: true})
     }
 
     onLoginFailed(error) {
@@ -54,7 +55,7 @@ class AuthStore extends Reflux.Store {
         this.setState({
             error: message,
             loading: false
-        })        
+        })
     }
 
     onRegister(email, password) {

@@ -5,17 +5,12 @@ import { BrowserRouter, HashRouter } from 'react-router-dom'
 
 import { firebaseConfig } from './constants/firebaseConfig.js'
 
-import { App } from './containers/App'
 require('./styles/global.scss')
 
-const routedApp = (
-    <HashRouter>
-        <App />
-    </HashRouter>	
-)
+import { RoutedApp } from './routedApp'
 
 // initialize firebase
 firebase.initializeApp(firebaseConfig)
 
 // initial render of app
-ReactDOM.render(routedApp, document.getElementById('app-root'))
+ReactDOM.render(RoutedApp, document.getElementById('app-root'))

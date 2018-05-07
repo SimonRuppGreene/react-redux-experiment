@@ -15,6 +15,10 @@ export class LoginPage extends Component {
         this.store = authStore.store
     }
 
+    componentWillReceiveProps = (newProps) => {
+        console.log('new props:', newProps)
+    }
+
     onLogin = (e) => {
         e.preventDefault()
         console.log(`logging in with email ${this.state.email}, password ${this.state.password}`)
@@ -53,6 +57,11 @@ export class LoginPage extends Component {
     }
 
     render () {
+        if (this.store.state.authenticated) {
+            console.log('about to push history')
+            this.props.history.push('/')
+        }
+
         return (
             <div>
                 <form>
@@ -60,19 +69,19 @@ export class LoginPage extends Component {
                         <legend>
                             Log In
                         </legend>
-                    
+
                         {this.renderError()}
                         {this.renderLoading()}
 
                         <p>
-                            <label htmlFor="email">Email</label>
+                            <label htmlFor="email">Email</label><br/>
                             <input name="email" type="text" placeholder="email" onChange={this.onChangeField('email')} />
                         </p>
                         <p>
-                            <label htmlFor="password">Password</label>
+                            <label htmlFor="password">Password</label><br/>
                             <input name="password" type="password" placeholder="password" onChange={this.onChangeField('password')}/>
                         </p>
-                        
+
                         <p>
                             <button onClick={this.onLogin}>
                                 Login
